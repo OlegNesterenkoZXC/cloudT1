@@ -1,0 +1,157 @@
+@import "../libs/normalize";
+@import "./var";
+
+html {
+	// $black: #303030;
+	// $grey: #909090;
+	// $off-white: #edeee9;
+	// $code: #d8dbce;
+	position: relative;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	// $sans-serif: "Inter", sans-serif;
+	background-color: $off-white;
+
+	body {
+		background-color: $off-white;
+		color: $black;
+		font-family: $sans-serif;
+		min-height: 100vh;
+		width: 100%;
+		padding: 2.5vh 10vw;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+
+		h1 {
+			font-size: clamp(1rem, 6vw, 10rem);
+			margin: 15vh 0 2rem;
+		}
+
+		a {
+			text-decoration: underline;
+			color: $black;
+		}
+
+		code {
+			font-size: 1rem;
+			padding: 0 0.5rem;
+			background-color: $code;
+		}
+
+		.explanation {
+			width: 100%;
+			margin-bottom: 15vh;
+			p {
+				font-size: 1rem;
+				max-width: 75ch;
+				margin: 2rem 0;
+			}
+
+			ul:last-child {
+				margin-bottom: 2rem;
+			}
+			ul {
+				display: flex;
+				flex-direction: column;
+
+				li {
+					list-style: none;
+					position: relative;
+					margin: 0.5rem 0;
+					&::before {
+						content: "👉";
+						position: absolute;
+						top: -0.25rem;
+						left: -2rem;
+					}
+				}
+			}
+		}
+
+		.container {
+			width: 100%;
+			max-width: 768px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 2rem 2rem 1.5rem;
+			background-color: $code;
+
+			@media (min-width: 768px) {
+				flex-direction: row;
+				align-items: center;
+			}
+
+			.cta-form {
+				margin-bottom: 2rem;
+				text-align: center;
+
+				@media (min-width: 768px) {
+					margin-bottom: 0;
+					margin-right: 2rem;
+					text-align: left;
+				}
+
+				h2 {
+					font-size: 1.5rem;
+					width: 100%;
+					max-width: 25ch;
+					margin: 0 auto;
+					text-align: center;
+
+					@media (min-width: 768px) {
+						text-align: left;
+						margin: 0;
+					}
+				}
+
+				p {
+					margin-top: 1rem;
+					font-size: 1rem;
+					width: 100%;
+					max-width: 24ch;
+				}
+			}
+		}
+	}
+
+	// Before someone yells at me for my improper use of SCSS— I know—
+	// This isn't using SCSS's 'cascading' methodology. The form's styling is outside of the body tag.
+	// I'm just doing it this way so I can minimize non-relevant code. 😁
+	/* #################### ########################### #################### */
+	/* #################### All form-related CSS below. #################### */
+	/* #################### ########################### #################### */
+
+	.form {
+		align-self: center;
+	}
+
+	.submit_btn,
+	.input_file::file-selector-button {
+		margin-right: 20px;
+		border: none;
+		background: #084cdf;
+		padding: 10px 20px;
+		border-radius: 10px;
+		color: #fff;
+		cursor: pointer;
+		transition: background 0.2s ease-in-out;
+	}
+	.submit_btn:hover,
+	.file_btn::file-selector-button:hover {
+		background: #0d45a5;
+	}
+
+	.img {
+		max-width: 30%;
+	}
+
+	.container.container_loader,
+	.container.container_text {
+		display: none;
+	}
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="#" type="image/x-icon">
+	<title>Распознавание</title>
+</head>
+
+<body>
+	<h1>Распознование речи</h1>
+	<div class="container container_form">
+		<div class="cta-form">
+			<h2>Заполните форму!</h2>
+			<p>
+				Отправьте нам файл и немного подожите
+			</p>
+		</div>
+		<form class="form" action="" method="post">
+			<p>
+
+				<label for="file">Ваш аудиофайл в формате MP3: <abbb title="required">*</abbb></label>
+				<input class="input_file" accept="audio/.mp3" required id="file" type="file" name="file" id="">
+			</p>
+			<p>
+				<label for="file">Согласие на обработку данных: <abbb title="required">*</abbb></label>
+				<input required type="checkbox">
+			</p>
+			<p>
+				<button class="submit_btn" type="submit">Отправить</button>
+			</p>
+		</form>
+	</div>
+	<div class="container container_loader">
+		<div class="img"></div>
+		<img class="img" src="./img/load.gif" alt="Обработка...">
+	</div>
+	<div class="container container_text">
+		<div class="cta-form">
+			<h2>Ваш текст</h2>
+		</div>
+		<p class="result">
+			123
+		</p>
+	</div>
+</body>
+
+</html>
