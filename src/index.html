@@ -9,37 +9,37 @@
 </head>
 
 <body>
-	<h1>Распознавание речи</h1>
-	<div class="container container_form">
-		<div class="cta-form">
-			<h2>Заполните форму!</h2>
-			<p>
-				Отправьте нам файл и немного подожите
+	<div class="container">
+		<div class="container__item">
+			<h1>Распознавание речи</h1>
+			<form class="form">
+				<div class="form__element ">
+					<label class="form__label" for="file">Ваш MP3 аудиофайл: <abbb title="required">*</abbb>
+						<div class="file-selector">
+							<span class="file-selector__file-name"></span>
+							<input class="file-selector__input" accept=".MP3, audio/mpeg" required id="file" type="file"
+								name="file">
+							<span class="file-selector__btn form__btn">Выберите файл</span>
+						</div>
+					</label>
+				</div>
+				<div class="form__element">
+					<button class="form__input form__btn" type="submit">Отправить</button>
+				</div>
+			</form>
+		</div>
+		<div class="container__item loader">
+			<img class="loader__img" src="./img/load.gif" alt="Обработка...">
+		</div>
+		<div class="container__item result">
+			<h2>Результат</h2>
+			<p class="result__text">
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, rem repellendus
+				nihil ratione officiis aspernatur porro neque incidunt at unde officia quis rerum eum minima ea
+				veniam maxime tempore iste!
 			</p>
 		</div>
-		<form class="form">
-			<p>
-				<label for="file">Ваш аудиофайл в формате MP3: <abbb title="required">*</abbb></label>
-				<input class="input_file" accept=".MP3, audio/mpeg" required id="file" type="file" name="file" id="">
-			</p>
-			<p>
-				<label for="file">Согласие на обработку данных: <abbb title="required">*</abbb></label>
-				<input required type="checkbox">
-			</p>
-			<p>
-				<button class="submit_btn" type="submit">Отправить</button>
-			</p>
-		</form>
-	</div>
-	<div class="container container_loader">
-		<div class="img"></div>
-		<img class="img" src="./img/load.gif" alt="Обработка...">
-	</div>
-	<div class="container container_text">
-		<div class="cta-form">
-			<h2>Ваш текст</h2>
-		</div>
-		<p class="result"></p>
+
 	</div>
 </body>
 

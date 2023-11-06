@@ -8,8 +8,18 @@ const requestInfo = {
 	fileName: '',
 	operationId: '',
 }
-const loaderContainer = document.getElementsByClassName('container container_loader')[0]
-const textContainer = document.getElementsByClassName('container container_text')[0]
+const loaderContainer = document.getElementsByClassName('container__item loader')[0]
+const textContainer = document.getElementsByClassName('container__item result')[0]
+loaderContainer.style.display = "none"
+textContainer.style.display = "none"
+
+const fileName = document.getElementsByClassName("file-selector__file-name")[0]
+
+const fileInputBtn = document.getElementsByClassName("file-selector__input")[0]
+fileInputBtn.value = ''
+fileInputBtn.addEventListener('change', () => {
+	fileName.innerHTML = fileInputBtn.files[0].name
+})
 
 const form = document.getElementsByClassName("form")[0]
 form.addEventListener('submit', async (event) => {
@@ -36,8 +46,8 @@ form.addEventListener('submit', async (event) => {
 		endpoint: ENDPOINT
 	})
 
-	textContainer.style.display = "none"
 	loaderContainer.style.display = "flex"
+	textContainer.style.display = "none"
 
 	await s3Client.send(new PutObjectCommand(params))
 		.then(async () => {
@@ -65,10 +75,9 @@ function setFetchInterval() {
 		if (data.done) {
 			const result = unpackData(data.response.chunks)
 			setResult(result)
-			textContainer.style.display = "flex"
 			loaderContainer.style.display = "none"
+			textContainer.style.display = "block"
 		} else {
-			setResult("Обработка...")
 			console.log("Not ready...")
 
 			delay *= 2;
@@ -78,7 +87,7 @@ function setFetchInterval() {
 }
 
 function setResult(text) {
-	const resultField = document.getElementsByClassName('result')[0]
+	const resultField = document.getElementsByClassName('result__text')[0]
 	resultField.innerHTML = text
 }
 
