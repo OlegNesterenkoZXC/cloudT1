@@ -8,10 +8,10 @@ const requestInfo = {
 	fileName: '',
 	operationId: '',
 }
+
 const loaderContainer = document.getElementsByClassName('container__item loader')[0]
 const textContainer = document.getElementsByClassName('container__item result')[0]
-loaderContainer.style.display = "none"
-textContainer.style.display = "none"
+hideLoaderAndResult()
 
 const fileName = document.getElementsByClassName("file-selector__file-name")[0]
 
@@ -46,8 +46,7 @@ form.addEventListener('submit', async (event) => {
 		endpoint: ENDPOINT
 	})
 
-	loaderContainer.style.display = "flex"
-	textContainer.style.display = "none"
+	showLoader()
 
 	await s3Client.send(new PutObjectCommand(params))
 		.then(async () => {
@@ -62,9 +61,25 @@ form.addEventListener('submit', async (event) => {
 		})
 		.catch(err => {
 			console.error(err)
-			setResult("Что-то пошло не так...")
+			setResult("Сервис распознавания не отвечает =(")
+			showResult()
 		})
 })
+
+function hideLoaderAndResult() {
+	loaderContainer.style.display = "none"
+	textContainer.style.display = "none"
+}
+
+function showLoader() {
+	loaderContainer.style.display = "flex"
+	textContainer.style.display = "none"
+}
+
+function showResult() {
+	loaderContainer.style.display = "none"
+	textContainer.style.display = "block"
+}
 
 function setFetchInterval() {
 	let delay = 1000
@@ -75,8 +90,7 @@ function setFetchInterval() {
 		if (data.done) {
 			const result = unpackData(data.response.chunks)
 			setResult(result)
-			loaderContainer.style.display = "none"
-			textContainer.style.display = "block"
+			showResult()
 		} else {
 			console.log("Not ready...")
 
